@@ -14,7 +14,7 @@ def check_reachability(gateway):
     Returns True if host (str) responds to a ping request.
     Remember that a host may not respond to a ping (ICMP) request even if the host name is valid.
     """
-    time.sleep(1)
+    time.sleep(15)
     # Option for the number of packets as a function of
     param = '-n' if platform.system().lower()=='windows' else '-c'
 
@@ -39,9 +39,9 @@ def main():
         sys.exit(1)
 
     # After this number of missed pings, bounce the wg interface
-    # As written, each unreachable ping takes about 2s to be noticed
-    # This means 30 missed pings will take about 60s to detect
-    MISSED_PINGS = 30
+    # As written, each unreachable ping takes about 15s to be noticed
+    # This means 4 missed pings will take about 60s to detect
+    MISSED_PINGS = 4
 
     # Number of consecutive pings that have failed
     missed_ping_count = 0
